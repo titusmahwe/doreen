@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffccff;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff3399;
+            font-size: 50px;
+            margin-top: 100px;
+        }
+        p {
+            font-size: 20px;
+        }
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: floatUp 5s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 0.7; }
+            100% { transform: translateY(-120vh); opacity: 0; }
+        }
+        .message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday Doreen! 🎂</h1>
+    <p>Click me! 🎈</p>
+    
+    <div id="message" class="message">
+        <h2>🥳 Happy Birthday! 🥳</h2>
+        <p>Wishing you joy, happiness, and success in the coming year! 🎁</p>
+    </div>
+    
+    <script>
+        function createBalloon() {
+            let balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            balloon.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(balloon);
+            setTimeout(() => { balloon.remove(); }, 5000);
+        }
+        setInterval(createBalloon, 500);
+        
+        document.body.addEventListener('click', function() {
+            document.getElementById('message').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
+
